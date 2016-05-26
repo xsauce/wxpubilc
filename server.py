@@ -8,7 +8,9 @@ import settings
 import argparse
 
 
-URL_ROUTES = [(r'/test', handler.TestHandler)]
+URL_ROUTES = [(r'/test', handler.TestHandler),
+              (r'/valid_wx', handler.WXValidHandler)
+              ]
 
 def make_server():
     return tornado.web.Application(URL_ROUTES, **settings.SERVER_SETTINGS)

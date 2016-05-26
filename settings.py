@@ -1,6 +1,10 @@
 __author__ = 'samgu'
 DEBUG = False
 
+WX_CONF = {
+    'token': 'smalllobster'
+}
+
 LOGGING = {
     'dirname': '/var/log/wxpublic',
     'level': 'INFO'
