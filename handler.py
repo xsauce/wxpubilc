@@ -24,6 +24,7 @@ class WXValidHandler(BaseHandler):
         echostr = self.get_query_argument('echostr', '')
         token = settings.WX_CONF['token']
         if wx_util.valid_wx(token, timestamp, nonce, signature):
-            self.write('Success')
+            self.write(echostr)
         else:
+            self.logger.error('valid wx error;')
             self.write('Failed')
