@@ -1,6 +1,9 @@
+# coding:utf-8
 from tornado.web import RequestHandler
 import settings
 from util import log, wx_util
+from util.wx_util import handle_wx_message
+
 __author__ = 'samgu'
 
 
@@ -30,6 +33,9 @@ class WXHandler(BaseHandler):
             self.write('Failed')
 
     def post(self, *args, **kwargs):
-        self.logger.info('post content: {0}'.format(self.request.body))
+        self.logger.debug('post content: {0}'.format(self.request.body))
+        return_text = handle_wx_message(self.request.body, self.logger)
+        self.logger.debug(('return text:%s' % return_text))
+        self.write(return_text)
 
 
