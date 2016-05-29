@@ -30,6 +30,9 @@ def create_logger(logger_name):
     #
     return logger
 
+def get_server_logger():
+    return create_logger('server')
+
 
 
 

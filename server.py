@@ -9,14 +9,14 @@ import argparse
 
 
 URL_ROUTES = [(r'/test', handler.TestHandler),
-              (r'/valid_wx', handler.WXValidHandler)
+              (r'/wx', handler.WXHandler)
               ]
 
 def make_server():
     return tornado.web.Application(URL_ROUTES, **settings.SERVER_SETTINGS)
 
 if __name__ == '__main__':
-    logger = log.create_logger('server')
+    logger = log.get_server_logger()
     try:
         parser = argparse.ArgumentParser()
         parser.add_argument('-debug', type=int, default=0)

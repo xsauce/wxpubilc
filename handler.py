@@ -7,7 +7,7 @@ __author__ = 'samgu'
 class BaseHandler(RequestHandler):
     def __init__(self, *args, **kwargs):
         super(BaseHandler, self).__init__(*args, **kwargs)
-        self.logger = log.create_logger('server')
+        self.logger = log.get_server_logger()
 
 
 
@@ -16,7 +16,7 @@ class TestHandler(BaseHandler):
         self.logger.info('hello world test')
         self.write('hello world')
 
-class WXValidHandler(BaseHandler):
+class WXHandler(BaseHandler):
     def get(self):
         signature = self.get_query_argument('signature', '')
         timestamp = self.get_query_argument('timestamp', '')
@@ -28,3 +28,8 @@ class WXValidHandler(BaseHandler):
         else:
             self.logger.error('valid wx error;')
             self.write('Failed')
+
+    def post(self, *args, **kwargs):
+        self.logger.debug('post content: {0}'.format(self.request.body_arguments))
+
+
