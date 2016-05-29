@@ -33,9 +33,9 @@ class WXHandler(BaseHandler):
             self.write('Failed')
 
     def post(self, *args, **kwargs):
-        self.logger.debug('post content: {0}'.format(self.request.body))
+        self.logger.info('post content: {0}'.format(self.request.body))
         return_text = handle_wx_message(self.request.body, self.logger)
-        self.logger.debug(('return text:%s' % return_text))
+        self.logger.info(('return text:%s' % return_text))
         self.write(return_text)
 
 
