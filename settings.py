@@ -1,5 +1,9 @@
 __author__ = 'samgu'
+import os
 DEBUG = False
+
+ROOT_DIR = os.path.dirname(__file__)
+CONF_DIR = os.path.join(ROOT_DIR, 'conf')
 
 WX_CONF = {
     'token': 'smalllobster'

@@ -10,16 +10,16 @@ class Manager:
     def build_server_running_env(self, args):
         try:
             if not args.user:
-                print 'incorrect user name'
+                print('incorrect user name')
                 return
             user = args.user
             log_dir = settings.LOGGING['dirname']
             if not os.path.exists(log_dir):
                 import subprocess
                 subprocess.call('sudo mkdir %s && sudo chown %s %s' % (log_dir, user, log_dir), shell=True)
-                print 'mkdir log'
-        except Exception, e:
-            print 'build server running env happened errors', e
+                print('mkdir log')
+        except Exception as e:
+            print('build server running env happened errors', e)
 
 
 if __name__ == '__main__':

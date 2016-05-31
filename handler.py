@@ -1,10 +1,9 @@
 # coding:utf-8
+__author__ = 'samgu'
 from tornado.web import RequestHandler
 import settings
 from util import log, wx_util
 from util.wx_util import handle_wx_message
-
-__author__ = 'samgu'
 
 
 class BaseHandler(RequestHandler):
@@ -13,11 +12,11 @@ class BaseHandler(RequestHandler):
         self.logger = log.get_server_logger()
 
 
-
 class TestHandler(BaseHandler):
     def get(self):
         self.logger.info('hello world test')
         self.write('hello world')
+
 
 class WXHandler(BaseHandler):
     def get(self):

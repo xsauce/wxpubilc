@@ -1,7 +1,6 @@
+__author__ = 'samgu'
 import handler
 from util import log
-
-__author__ = 'samgu'
 import tornado.ioloop
 import tornado.web
 import settings

@@ -1,8 +1,9 @@
-import os
-
 __author__ = 'samgu'
+import os
 import logging
 import settings
+
+_server_logger = None
 
 def create_logger(logger_name):
     logger = logging.getLogger(logger_name)
@@ -30,9 +31,12 @@ def create_logger(logger_name):
     #
     return logger
 
-def get_server_logger():
-    return create_logger('server')
 
+def get_server_logger():
+    global _server_logger
+    if _server_logger is None:
+        _server_logger = create_logger('server')
+    return _server_logger
 
 
 

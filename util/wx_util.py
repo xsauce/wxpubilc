@@ -2,10 +2,11 @@
 import time
 from lib.ai import AI
 from util import log
-
-__author__ = 'samgu'
 import hashlib
 from lxml import etree
+
+__author__ = 'samgu'
+
 
 def valid_wx(token, timestamp, nonce, signature):
     valid_str = ''.join(sorted([token, timestamp, nonce]))
@@ -18,8 +19,6 @@ def valid_wx(token, timestamp, nonce, signature):
 
 def handle_wx_message(xml_str, logger):
     try:
-        if isinstance(xml_str, unicode):
-            xml_str = xml_str.decode('utf8')
         if xml_str:
             parser = WXMessageParser(xml_str)
             msg_dict = parser.parse()
@@ -52,7 +51,7 @@ class WXMessageParser(object):
                 msg_dict['msg_type'] = self.xml_obj.xpath('MsgType')[0].text
                 msg_dict['content_obj'] = getattr(self, msg_dict['msg_type'] + '_parse')()
                 return msg_dict
-        except Exception, e:
+        except Exception as e:
             self.logger.error('fail to parse wx message', exc_info=True)
             raise e
 
