@@ -1,7 +1,7 @@
 # coding: utf-8
+import logging
 import time
 from lib.ai import AI
-from util import log
 import hashlib
 from lxml import etree
 
@@ -38,7 +38,7 @@ def handle_wx_message(xml_str, logger):
 class WXMessageParser(object):
     def __init__(self, xml_str):
         self.xml_str = xml_str
-        self.logger = log.get_server_logger()
+        self.logger = logging.getLogger(__name__)
 
     def parse(self):
         msg_dict = {}

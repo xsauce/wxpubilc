@@ -1,22 +1,22 @@
 __author__ = 'samgu'
 import os
-import logging
+try:
+    from cloghandler import ConcurrentRotatingFileHandler as RFHandler
+except ImportError:
+    # Next 2 lines are optional:  issue a warning to the user
+    from warnings import warn
+    warn("ConcurrentLogHandler package not installed.  Using builtin log handler")
+    from logging.handlers import RotatingFileHandler as RFHandler
 import settings
+import logging
 
-_server_logger = None
+def setup_logger(log_filename):
+    logger = logging.getLogger()
+    numeric_level = getattr(logging, settings.LOGGING['level'].upper(), None)
+    if not isinstance(numeric_level, int):
+        raise ValueError('incorrect log level %s in settings' % settings.LOGGING['level'])
 
-def create_logger(logger_name):
-    logger = logging.getLogger(logger_name)
-    log_level_dict = {
-        'NOTSET': logging.NOTSET,
-        'DEBUG': logging.DEBUG,
-        'INFO': logging.INFO,
-        'WARNING': logging.WARNING,
-        'ERROR': logging.ERROR,
-        'CRITICAL': logging.CRITICAL
-    }
-
-    logger.setLevel(log_level_dict[settings.LOGGING['level']])
+    logger.setLevel(numeric_level)
     formatter = logging.Formatter('[%(asctime)s - %(name)s - %(levelname)s] %(message)s')
     # console handler
     ch = logging.StreamHandler()
@@ -25,18 +25,11 @@ def create_logger(logger_name):
     #
 
     # file handler
-    fh = logging.FileHandler(os.path.join(settings.LOGGING['dirname'], logger_name) + '.log')
-    fh.setFormatter(formatter)
-    logger.addHandler(fh)
+    log_filepath = os.path.join(settings.LOGGING['dirname'], log_filename)
+    rotate_handler = RFHandler(log_filepath, "a", settings.LOGGING['max_size'] * 1024 * 1024, settings.LOGGING['backup_num'])
+    rotate_handler.setFormatter(formatter)
+    logger.addHandler(rotate_handler)
     #
-    return logger
-
-
-def get_server_logger():
-    global _server_logger
-    if _server_logger is None:
-        _server_logger = create_logger('server')
-    return _server_logger
 
 
 

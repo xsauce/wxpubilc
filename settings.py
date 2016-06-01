@@ -11,7 +11,9 @@ WX_CONF = {
 
 LOGGING = {
     'dirname': '/var/log/wxpublic',
-    'level': 'INFO'
+    'level': 'INFO',
+    'max_size': 100, # unit is MB
+    'backup_num': 5
 }
 
 SERVER_SETTINGS = {

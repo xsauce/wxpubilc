@@ -1,3 +1,5 @@
+import logging
+
 __author__ = 'samgu'
 import handler
 from util import log
@@ -15,7 +17,8 @@ def make_server():
     return tornado.web.Application(URL_ROUTES, **settings.SERVER_SETTINGS)
 
 if __name__ == '__main__':
-    logger = log.get_server_logger()
+    log.setup_logger('server.log')
+    logger = logging.getLogger(__name__)
     try:
         parser = argparse.ArgumentParser()
         parser.add_argument('-debug', type=int, default=0)

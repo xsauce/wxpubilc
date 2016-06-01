@@ -2,14 +2,15 @@
 __author__ = 'samgu'
 from tornado.web import RequestHandler
 import settings
-from util import log, wx_util
+from util import wx_util
 from util.wx_util import handle_wx_message
+import logging
 
 
 class BaseHandler(RequestHandler):
     def __init__(self, *args, **kwargs):
         super(BaseHandler, self).__init__(*args, **kwargs)
-        self.logger = log.get_server_logger()
+        self.logger = logging.getLogger(__name__)
 
 
 class TestHandler(BaseHandler):
