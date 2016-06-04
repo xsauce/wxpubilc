@@ -60,6 +60,9 @@ class WXMessageParser(object):
     def text_parse(self):
         return self.xml_obj.xpath('Content')[0].text
 
+    def image_parse(self):
+        return NO_SUPPORT
+
     def voice_parse(self):
         return NO_SUPPORT
 
