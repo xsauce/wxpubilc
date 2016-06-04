@@ -7,6 +7,7 @@ from lxml import etree
 
 __author__ = 'samgu'
 
+NO_SUPPORT = 'no_support'
 
 def valid_wx(token, timestamp, nonce, signature):
     valid_str = ''.join(sorted([token, timestamp, nonce]))
@@ -58,6 +59,19 @@ class WXMessageParser(object):
 
     def text_parse(self):
         return self.xml_obj.xpath('Content')[0].text
+
+    def voice_parse(self):
+        return NO_SUPPORT
+
+    def video_parse(self):
+        return NO_SUPPORT
+
+    def music_parse(self):
+        return NO_SUPPORT
+
+    def news_parse(self):
+        return NO_SUPPORT
+
 
 
 class WXMessageReply(object):

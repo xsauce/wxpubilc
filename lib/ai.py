@@ -72,6 +72,21 @@ class AI(object):
             input = ''
         return {'msg_type': 'text', 'content': self.chat(msg_dict['to_user_name'], input)}
 
+    def voice(self, msg_dict):
+        return {'msg_type': 'text', 'content': '暂时不能语音对话哦！'}
+
+    def image(self, msg_dict):
+        return {'msg_type': 'text', 'content': '暂时看不懂图片！'}
+
+    def video(self, msg_dict):
+        return {'msg_type': 'text', 'content': '暂时看不懂视频哦'}
+
+    def music(self, msg_dict):
+        return {'msg_type': 'text', 'content': '暂时听不懂音乐'}
+
+    def news(self, msg_dict):
+        return {'msg_type': 'text', 'content': '不懂你发的啥'}
+
 
 
 
