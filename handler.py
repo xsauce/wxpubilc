@@ -53,13 +53,13 @@ class AsyncWXHandler(BaseHandler):
 
     def post(self, *args, **kwargs):
         # valid whether request is from wx
-        signature = self.get_query_argument('signature', '')
-        timestamp = self.get_query_argument('timestamp', '')
-        nonce = self.get_query_argument('nonce', '')
-        token = settings.WX_CONF['token']
-        if wx_util.valid_wx(token, timestamp, nonce, signature):
-            self.logger.error('invalid wx request')
-            self.write('invalid request')
+        # signature = self.get_query_argument('signature', '')
+        # timestamp = self.get_query_argument('timestamp', '')
+        # nonce = self.get_query_argument('nonce', '')
+        # token = settings.WX_CONF['token']
+        # if wx_util.valid_wx(token, timestamp, nonce, signature):
+        #     self.logger.error('invalid wx request')
+        #     self.write('invalid request')
 
         self.logger.info('post content: {0}'.format(self.request.body))
         if self.request.body:
