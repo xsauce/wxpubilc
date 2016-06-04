@@ -45,7 +45,7 @@ class Turing123Robot(object):
         }
         response = requests.post(
             settings.TURING_API_CONF['api'],
-            json=request_body
+            data=request_body
         )
         turing_resp = response.json()
         if turing_resp['code'] == 40007:
@@ -53,9 +53,6 @@ class Turing123Robot(object):
             return '系统异常, %s' % str(turing_resp)
         else:
             return turing_resp.get('text')
-
-
-
 
 
 class AI(object):
