@@ -5,32 +5,32 @@ import settings
 import requests
 
 __author__ = 'samgu'
-import aiml
+# import aiml
 
 
-class SimpleChat(object):
-    def __init__(self):
-        self._logger = logging.getLogger(__name__)
-        self._startup_xml = os.path.join(settings.TMP_DIR, 'aiml', 'std-startup.xml')
-        self._chat_brain_file = os.path.join(settings.CONF_DIR, 'aiml', 'chat_brain.brn')
-        if os.path.exists(self._chat_brain_file):
-            self._brain = aiml.Kernel()
-            self._brain.bootstrap(brainFile=self._chat_brain_file)
-        else:
-            self.boot()
-            self._brain = None
-
-    def boot(self):
-        self._brain = aiml.Kernel()
-        self._brain.bootstrap(learnFiles=self._startup_xml, commands='chat')
-        self._brain.saveBrain(self._chat_brain_file)
-
-    def reply(self, input):
-        if self._brain:
-            return self._brain.respond(input)
-        else:
-            self._logger.error('no brain')
-            return ''
+# class SimpleChat(object):
+#     def __init__(self):
+#         self._logger = logging.getLogger(__name__)
+#         self._startup_xml = os.path.join(settings.TMP_DIR, 'aiml', 'std-startup.xml')
+#         self._chat_brain_file = os.path.join(settings.CONF_DIR, 'aiml', 'chat_brain.brn')
+#         if os.path.exists(self._chat_brain_file):
+#             self._brain = aiml.Kernel()
+#             self._brain.bootstrap(brainFile=self._chat_brain_file)
+#         else:
+#             self.boot()
+#             self._brain = None
+#
+#     def boot(self):
+#         self._brain = aiml.Kernel()
+#         self._brain.bootstrap(learnFiles=self._startup_xml, commands='chat')
+#         self._brain.saveBrain(self._chat_brain_file)
+#
+#     def reply(self, input):
+#         if self._brain:
+#             return self._brain.respond(input)
+#         else:
+#             self._logger.error('no brain')
+#             return ''
 
 
 class Turing123Robot(object):

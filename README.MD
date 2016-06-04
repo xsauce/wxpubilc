@@ -15,7 +15,9 @@ lxml
 tornado
 https://github.com/huntersan9/Py3kAiml.git
 ConcurrentLogHandler
+requests
 supervisor
+
 
 
 Deploy:
