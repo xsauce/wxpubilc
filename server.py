@@ -10,7 +10,7 @@ import argparse
 
 
 URL_ROUTES = [(r'/test', handler.TestHandler),
-              (r'/wx', handler.WXHandler)
+              (r'/wx', handler.AsyncWXHandler)
               ]
 
 def make_server():

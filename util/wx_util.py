@@ -17,7 +17,8 @@ def valid_wx(token, timestamp, nonce, signature):
         return 0
 
 
-def handle_wx_message(xml_str, logger):
+def handle_wx_message(xml_str):
+    logger = logging.getLogger(__name__)
     try:
         if xml_str:
             parser = WXMessageParser(xml_str)
@@ -77,7 +78,7 @@ class WXMessageReply(object):
         <MsgType><![CDATA[text]]></MsgType>
         <Content><![CDATA[{3}]]></Content>
         </xml>
-        '''.format(self.to_user_name, self.from_user_name, int(time.time()), self.reply_dict['content'].encode('utf8'))
+        '''.format(self.to_user_name, self.from_user_name, int(time.time()), self.reply_dict['content'])
 
 
 

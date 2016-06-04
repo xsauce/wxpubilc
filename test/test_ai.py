@@ -1,3 +1,4 @@
+# coding:utf-8
 from lib.ai import AI
 
 __author__ = 'sam'
