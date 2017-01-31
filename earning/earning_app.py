@@ -14,7 +14,3 @@ def app_main(relative_path):
     handler_module = importlib.import_module('handler.{0}_handler'.format(handler_name))
     handler_obj = getattr(handler_module, '{0}_Handler'.format(handler_name))()
     return getattr(handler_obj, '{0}_action'.format(action_name))()
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=9990, debug=True)
