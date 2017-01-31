@@ -1,8 +1,9 @@
 # coding:utf-8
 import logging
-import os
-import settings
+
 import requests
+
+from speak import settings
 
 __author__ = 'samgu'
 # import aiml

@@ -1,10 +1,12 @@
 # coding:utf-8
 __author__ = 'samgu'
+import logging
+
 from tornado.web import RequestHandler
+
 import settings
 from util import wx_util
 from util.wx_util import handle_wx_message
-import logging
 
 
 class BaseHandler(RequestHandler):

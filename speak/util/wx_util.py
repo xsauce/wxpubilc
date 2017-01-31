@@ -1,9 +1,11 @@
 # coding: utf-8
+import hashlib
 import logging
 import time
-from lib.ai import AI
-import hashlib
+
 from lxml import etree
+
+from speak.lib import AI
 
 __author__ = 'samgu'
 

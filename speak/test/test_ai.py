@@ -1,5 +1,5 @@
 # coding:utf-8
-from lib.ai import AI
+from speak.lib import AI
 
 __author__ = 'sam'
 

@@ -7,7 +7,7 @@ except ImportError:
     from warnings import warn
     warn("ConcurrentLogHandler package not installed.  Using builtin log handler")
     from logging.handlers import RotatingFileHandler as RFHandler
-import settings
+from speak import settings
 import logging
 
 def setup_logger(log_filename):

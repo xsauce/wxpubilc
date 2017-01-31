@@ -1,7 +1,7 @@
 # coding:utf-8
 import logging
-from util import log
-from util.wx_util import handle_wx_message
+
+from speak.util import handle_wx_message
 
 __author__ = 'samgu'
 
