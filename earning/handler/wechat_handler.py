@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import hashlib
 from flask import request
-from earning import settings
+import earning.settings
 from earning.exceptions import WrongParameterError
 
 class wechat_Handler(object):
@@ -16,7 +16,7 @@ class wechat_Handler(object):
 
     def is_valid_msg(self):
         sign = request.args.get('signature')
-        token = settings.WECHAT_SETTINGS['token']
+        token = earning.settings.WECHAT_SETTINGS['token']
         timestamp = request.args.get('timestamp')
         nonce = request.args.get('nonce')
         sha = hashlib.sha1()
