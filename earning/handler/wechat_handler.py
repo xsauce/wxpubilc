@@ -2,7 +2,7 @@
 import hashlib
 from flask import request
 import settings
-from exceptions import WrongParameterError
+from app_exceptions import WrongParameterError
 
 class wechat_Handler(object):
     def __init__(self):
